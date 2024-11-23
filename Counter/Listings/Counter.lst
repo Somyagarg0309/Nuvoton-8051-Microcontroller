@@ -1,0 +1,184 @@
+C51 COMPILER V9.60.7.0   COUNTER                                                           11/21/2024 18:59:12 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE COUNTER
+OBJECT MODULE PLACED IN .\Objects\Counter.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Counter.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\C
+                    -ounter.lst) TABS(2) OBJECT(.\Objects\Counter.obj)
+
+line level    source
+
+   1          #include <reg52.h>   // Include 8051 register definitions
+   2          
+   3          // Define the LED pins for each row and column as per the matrix configuration
+   4          sbit LED1 = P1^1;  // Row 1, Column 1
+   5          sbit LED2 = P1^2;  // Row 1, Column 2
+   6          sbit LED3 = P1^3;  // Row 1, Column 3
+   7          
+   8          sbit LED4 = P1^4;  // Row 2, Column 1
+   9          sbit LED5 = P1^5;  // Row 2, Column 2
+  10          sbit LED6 = P1^6;  // Row 2, Column 3
+  11          
+  12          sbit LED7 = P1^7;  // Row 3, Column 1
+  13          sbit LED8 = P2^6;  // Row 3, Column 2
+  14          sbit LED9 = P2^1;  // Row 3, Column 3
+  15          
+  16          sbit LED10 = P2^5; // Row 4, Column 1
+  17          sbit LED11 = P2^3; // Row 4, Column 2
+  18          sbit LED12 = P2^4; // Row 4, Column 3
+  19          
+  20          // Function prototypes
+  21          void Delay(void);
+  22          void displayDigit0(void);
+  23          void displayDigit1(void);
+  24          void displayDigit2(void);
+  25          void displayDigit3(void);
+  26          void displayDigit4(void);
+  27          void displayDigit5(void);
+  28          void displayDigit6(void);
+  29          void displayDigit7(void);
+  30          void displayDigit8(void);
+  31          void displayDigit9(void);
+  32          
+  33          void main(void) {
+  34   1          while (1) {
+  35   2              displayDigit0();  // Display digit 0
+  36   2              Delay();
+  37   2            
+  38   2              displayDigit1();  // Display digit 1
+  39   2              Delay();
+  40   2              
+  41   2              displayDigit2();  // Display digit 2
+  42   2              Delay();
+  43   2              
+  44   2              displayDigit3();  // Display digit 3
+  45   2              Delay();
+  46   2              
+  47   2              displayDigit4();  // Display digit 4
+  48   2              Delay();
+  49   2              
+  50   2              displayDigit5();  // Display digit 5
+  51   2              Delay();
+  52   2              
+  53   2              displayDigit6();  // Display digit 6
+  54   2              Delay();
+C51 COMPILER V9.60.7.0   COUNTER                                                           11/21/2024 18:59:12 PAGE 2   
+
+  55   2              
+  56   2              displayDigit7();  // Display digit 7
+  57   2              Delay();
+  58   2              
+  59   2              displayDigit8();  // Display digit 8
+  60   2              Delay();
+  61   2              
+  62   2              displayDigit9();  // Display digit 9
+  63   2              Delay();
+  64   2              
+  65   2          }
+  66   1      }
+  67          
+  68          // Delay function to control time between digits
+  69          void Delay(void) {
+  70   1          int i, j;
+  71   1          for (i = 0; i < 3000; i++) {  // Outer loop for delay
+  72   2              for (j = 0; j < 100; j++) {  // Inner loop for delay
+  73   3                  // Empty loop to waste time
+  74   3              }
+  75   2          }
+  76   1      }
+  77          
+  78          // Function to display the digit '0'
+  79          void displayDigit0(void) {
+  80   1          LED1 = 1; LED2 = 1; LED3 = 1;  // First row (Columns 1, 2, 3)
+  81   1          LED4 = 1; LED5 = 0; LED6 = 1;  // Second row (Columns 1, 2, 3)
+  82   1          LED7 = 1; LED8 = 0; LED9 = 1;  // Third row (Columns 1, 2, 3)
+  83   1          LED10 = 1; LED11 = 1; LED12 = 1;  // Fourth row (Columns 1, 2, 3 for digit 0)
+  84   1      }
+  85          
+  86          // Function to display the digit '1'
+  87          void displayDigit1(void) {
+  88   1          LED1 = 0; LED2 = 1; LED3 = 0;  // First row
+  89   1          LED4 = 1; LED5 = 1; LED6 = 0;  // Second row
+  90   1          LED7 = 0; LED8 = 1; LED9 = 0;  // Third row
+  91   1          LED10 = 1; LED11 = 1; LED12 = 1;  // Fourth row for digit 1
+  92   1      }
+  93          
+  94          // Function to display the digit '2'
+  95          void displayDigit2(void) {
+  96   1          LED1 = 0; LED2 = 1; LED3 = 0;  // First row
+  97   1          LED4 = 1; LED5 = 0; LED6 = 1;  // Second row
+  98   1          LED7 = 0; LED8 = 1; LED9 = 0;  // Third row
+  99   1          LED10 = 1; LED11 = 1; LED12 = 1;  // Fourth row for digit 2
+ 100   1      }
+ 101          
+ 102          // Function to display the digit '3'
+ 103          void displayDigit3(void) {
+ 104   1          LED1 = 1; LED2 = 1; LED3 = 1;  // First row
+ 105   1          LED4 = 0; LED5 = 1; LED6 = 0;  // Second row
+ 106   1          LED7 = 1; LED8 = 0; LED9 = 1;  // Third row
+ 107   1          LED10 = 1; LED11 = 1; LED12 = 1;  // Fourth row for digit 3
+ 108   1      }
+ 109          
+ 110          // Function to display the digit '4'
+ 111          void displayDigit4(void) {
+ 112   1          LED1 = 1; LED2 = 0; LED3 = 1;  // First row
+ 113   1          LED4 = 1; LED5 = 0; LED6 = 1;  // Second row
+ 114   1          LED7 = 1; LED8 = 1; LED9 = 1;  // Third row
+ 115   1          LED10 = 0; LED11 = 0; LED12 = 1;  // Fourth row for digit 4
+ 116   1      }
+C51 COMPILER V9.60.7.0   COUNTER                                                           11/21/2024 18:59:12 PAGE 3   
+
+ 117          
+ 118          // Function to display the digit '5'
+ 119          void displayDigit5(void) {
+ 120   1          LED1 = 1; LED2 = 1; LED3 = 1;  // First row
+ 121   1          LED4 = 1; LED5 = 1; LED6 = 1;  // Second row
+ 122   1          LED7 = 0; LED8 = 0; LED9 = 1;  // Third row
+ 123   1          LED10 = 1; LED11 = 1; LED12 = 1;  // Fourth row for digit 5
+ 124   1      }
+ 125          
+ 126          // Function to display the digit '6'
+ 127          void displayDigit6(void) {
+ 128   1          LED1 = 1; LED2 = 1; LED3 = 1;  // First row
+ 129   1          LED4 = 1; LED5 = 0; LED6 = 0;  // Second row
+ 130   1          LED7 = 1; LED8 = 1; LED9 = 1;  // Third row
+ 131   1          LED10 = 1; LED11 = 1; LED12 = 1;  // Fourth row for digit 6
+ 132   1      }
+ 133          
+ 134          // Function to display the digit '7'
+ 135          void displayDigit7(void) {
+ 136   1          LED1 = 1; LED2 = 1; LED3 = 1;  // First row
+ 137   1          LED4 = 0; LED5 = 0; LED6 = 1;  // Second row
+ 138   1          LED7 = 0; LED8 = 0; LED9 = 1;  // Third row
+ 139   1          LED10 = 0; LED11 = 0; LED12 = 1;  // Fourth row for digit 7
+ 140   1      }
+ 141          
+ 142          // Function to display the digit '8'
+ 143          void displayDigit8(void) {
+ 144   1          LED1 = 1; LED2 = 1; LED3 = 1;  // First row
+ 145   1          LED4 = 1; LED5 = 1; LED6 = 1;  // Second row
+ 146   1          LED7 = 1; LED8 = 0; LED9 = 1;  // Third row
+ 147   1          LED10 = 1; LED11 = 1; LED12 = 1;  // Fourth row for digit 8
+ 148   1      }
+ 149          
+ 150          // Function to display the digit '9'
+ 151          void displayDigit9(void) {
+ 152   1          LED1 = 1; LED2 = 1; LED3 = 1;  // First row
+ 153   1          LED4 = 1; LED5 = 1; LED6 = 1;  // Second row
+ 154   1          LED7 = 0; LED8 = 0; LED9 = 1;  // Third row
+ 155   1          LED10 = 1; LED11 = 1; LED12 = 1;  // Fourth row for digit 9
+ 156   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    341    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
